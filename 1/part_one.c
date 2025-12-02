@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "parser.h"
+#include "../helpers/parser.h"
 
 int main() {
   const char *filename = "big-input.txt";
@@ -9,11 +9,11 @@ int main() {
   struct parser_context pctx;
 
   init_parser(&pctx, filename, filemode);
-
+  char delimeter = '\n';
   int dp = 50;
   int password = 0;
   
-  while (next_token(&pctx)) {
+  while (next_token(&pctx, delimeter)) {
     char input[3];
     input[0] = pctx.token[1];
     input[1] = pctx.token[2];
