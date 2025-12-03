@@ -1,4 +1,4 @@
-#define BUFFER_SIZE 100
+#define BUFFER_SIZE 1024
 
 struct parser_context {
   FILE *fp;

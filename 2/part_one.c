@@ -6,7 +6,7 @@
 #define LOG_VERBOSE 0
 
 int main() {
-  const char *filename = "big-input.txt";
+  const char *filename = "funny-input.txt";
   const char *filemode = "r";
 
   struct parser_context pctx;
