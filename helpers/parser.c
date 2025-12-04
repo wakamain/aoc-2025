@@ -4,7 +4,7 @@
 #include "parser.h"
 
 int is_token_char(int c) {
-  const char *char_set = "-";
+  const char *char_set = "-@.";
   return isalnum(c) || strchr(char_set, c) != NULL;
 }
 
