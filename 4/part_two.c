@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include "../helpers/parser.h"
 
-#define LOG_VERBOSE 1
+#define LOG_VERBOSE 0
+#define VISUALIZE 0
 
 int main() {
-  const char *filename = "smallest-input.txt";
+  const char *filename = "big-input.txt";
   const char *filemode = "r";
   
   struct parser_context pctx;
@@ -73,6 +75,22 @@ int main() {
 	}
       }
     }
+
+    if (VISUALIZE) {
+      printf("\033[H"); // move to top-left
+      
+      for (int i = 0; i < level_number; i++) {
+	for (int j = 0; j < grid_length; j++) {
+	  printf("%c", grid[i][j]);
+	}
+	printf("\n");
+      }
+      printf("\n");
+      
+      fflush(stdout);
+      usleep(100000);
+  }
+
 
     for (int i = 0; i < level_number; i++) {
       for (int j = 0; j < grid_length; j++) {
