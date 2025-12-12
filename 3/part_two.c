@@ -74,10 +74,11 @@ int main() {
   struct parser_context pctx;
 
   init_parser(&pctx, filename, filemode);
-  const char delimeter = '\n';
+  const char *delimeters = "\n";
+  const bool allowed_whitespaces = false;
 
   char counter[128] = "0";
-  while(next_token(&pctx, delimeter)) {
+  while(next_token(&pctx, delimeters, allowed_whitespaces)) {
     const char *bank = pctx.token;
     const size_t bank_len = strlen(bank);
 

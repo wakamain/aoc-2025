@@ -43,13 +43,14 @@ int main() {
 
   init_parser(&pctx, filename, filemode);
 
-  const char delimeter = '\n';
+  const char *delimeters = "\n";
+  const bool allowed_whitespaces = false;
 
   char grid[256][256];
   char modifiable_grid[256][256];
   int level_number = 0;
   int grid_length = 0;
-  while (next_token(&pctx, delimeter)) {
+  while (next_token(&pctx, delimeters, allowed_whitespaces)) {
     const char *level = pctx.token;
     const size_t level_length = strlen(level);
     grid_length = (int)level_length;

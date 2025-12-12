@@ -12,14 +12,15 @@ int main() {
   struct parser_context pctx;
   
   init_parser(&pctx, filename, filemode);
-  char delimeter = '\n';
+  const char *delimeters = "\n";
+  const bool allowed_whitespaces = false;
   long long counter = 0;
   
   long long first_ids[256];
   long long second_ids[256];
   int insert_idx = 0;
 
-  while (next_token(&pctx, delimeter)) {
+  while (next_token(&pctx, delimeters, allowed_whitespaces)) {
     const char *code = pctx.token;
     char *dash = strchr(code, '-');
     if (dash == NULL) {

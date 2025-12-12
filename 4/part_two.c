@@ -14,14 +14,15 @@ int main() {
 
   init_parser(&pctx, filename, filemode);
 
-  const char delimeter = '\n';
+  const char *delimeters = "\n";
+  const bool allowed_whitespaces = false;
 
   char grid[256][256];
   unsigned char to_delete[256][256];
   memset(to_delete, 0, sizeof(to_delete));
   int level_number = 0;
   int grid_length = 0;
-  while (next_token(&pctx, delimeter)) {
+  while (next_token(&pctx, delimeters, allowed_whitespaces)) {
     const char *level = pctx.token;
     const size_t level_length = strlen(level);
     grid_length = (int)level_length;

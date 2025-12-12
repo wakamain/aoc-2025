@@ -28,10 +28,11 @@ int main() {
   struct parser_context pctx;
   
   init_parser(&pctx, filename, filemode);
-  char delimeter = ',';
+  const char *delimeters = ",";
+  const bool allowed_whitespaces = false;
   long long counter = 0;
   
-  while (next_token(&pctx, delimeter)) {
+  while (next_token(&pctx, delimeters, allowed_whitespaces)) {
     const char *code = pctx.token;
     if (LOG_VERBOSE) printf("INFO: Token [%s]\n", code);
     

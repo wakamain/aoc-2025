@@ -9,11 +9,12 @@ int main() {
   struct parser_context pctx;
 
   init_parser(&pctx, filename, filemode);
-  char delimeter = '\n';
+  const char *delimeters = "\n";
+  const bool allowed_whitespaces = false;
   int dp = 50;
   int password = 0;
   
-  while (next_token(&pctx, delimeter)) {
+  while (next_token(&pctx, delimeters, allowed_whitespaces)) {
     char input[3];
     input[0] = pctx.token[1];
     input[1] = pctx.token[2];
